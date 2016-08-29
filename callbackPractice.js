@@ -56,7 +56,7 @@ last(names, function(lastName){
 
 
 
-/* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
+// /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
 
@@ -76,7 +76,7 @@ multiply(4, 3, function(answer){
 
 
 
-/* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
+// /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
 
@@ -109,12 +109,26 @@ contains(names, 'Colt', function(result){
 
 
 
-/* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
+// /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
 
 
     //Code Here for uniq
+function uniq ( names, cb ) {
+  var newArr = names;
+  var i = 0;
+  while (i < names.length) {
+    if ( newArr.indexOf(names[i]) !== newArr.lastIndexOf(names[i]) ) {
+      newArr.splice(newArr.lastIndexOf(names[i]), 1);
+    }
+    else {
+      i++
+    }
+  }
+  cb( newArr );
+}
+
 
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -124,12 +138,17 @@ uniq(names, function(uniqArr){
 
 
 
-/* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
+// /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
 
 
     //Code Here for each
+function each( names, cb ) {
+  for (var i = 0; i < names.length; i++) {
+    cb ( names[0], i );
+  }
+}
 
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -139,13 +158,30 @@ each(names, function(item, indice){
 
 
 
-/* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
+// /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
 
 
 
  //code here for getUserById
+function getUserById ( users, id, cb ) {
+  var thisUser = {};
+  var evalObj = { wolf: "yolo" };
+  for (var i = 0; i < users.length; i++) {
+    if ( thisUser === evalObj ) {
+      break;
+    }
+    evalObj = users[i];
+    for (var key in evalObj) {
+      if ( evalObj[key] === id ) {
+          thisUser = evalObj;
+          break;
+      }
+    }
+  }
+  cb ( thisUser );
+}
 
 var users = [
   {
